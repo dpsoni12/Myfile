@@ -1,0 +1,91 @@
+/*
+stack 
+*/
+package exam;
+
+import java.util.Scanner;
+
+/**
+ *
+ * @author KRUNAL RANA
+ */
+public class stack {
+    Scanner input = new Scanner(System.in);
+    int top=-1;
+    int max = 5;    
+       
+    int[] s = new int[max];
+    
+    void push()
+    {
+        int data;   
+        if(top>=max-1)
+            System.out.println("\nStack is full ");
+        else
+        {
+            top++;
+            System.out.println("\nEnter the data : ");
+            data = input.nextInt();
+            s[top]=data;
+        }
+        display();
+    }
+    
+    void pop()
+    {
+        if(top==-1)
+            System.out.println("Stack is empty");
+        else
+        {
+            top--;
+        }
+        display();
+    }
+    void display()
+    {
+        if(top==-1)
+        {
+            System.out.println("\nNothing to print : ");
+        }
+        else
+        {
+            for(int i=0;i<=top;i++)
+            {
+                System.out.println(" => "+s[i]);
+            }
+        }
+    }
+    
+    public static void main(String[] args) {
+        stack s1 = new stack();
+        
+        int ch;
+        
+        do
+        {
+            System.out.println("");
+            System.out.println("1. push");
+            System.out.println("2. pop");
+            System.out.println("3. Display");
+            System.out.println("4. exit");
+            System.out.println("\nEnter the choice : ");
+            ch = s1.input.nextInt();
+            
+            switch(ch)
+            {
+                case 1:
+                    s1.push();
+                    break;
+                case 2:
+                    s1.pop();
+                    break;
+                case 3:
+                    s1.display();
+                    break;
+                case 4:
+                    break;
+         
+            }
+        }while(ch!=4);
+    }
+}

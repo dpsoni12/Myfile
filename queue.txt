@@ -1,0 +1,108 @@
+/*
+queue
+*/
+package exam;
+
+import java.util.Scanner;
+
+/**
+ *
+ * @author KRUNAL RANA
+ */
+public class queue {
+    Scanner input = new Scanner(System.in);
+    int front=-1;
+    int rear=-1;
+    int max=5;
+    int[] q = new int[max];
+    
+    boolean isfull()
+    {
+        if(rear>=max-1)
+            return true;
+        return false;
+    }
+    boolean isempty()
+    {
+        if(front==-1)
+            return true;
+        return false;
+    }
+    void enqueue()
+    {
+        int data;
+        if(isfull())
+            System.out.println("Queue is full");
+        else
+        {
+            rear++;
+            System.out.println("Enter the data : ");
+            data = input.nextInt();
+            q[rear] = data;
+            
+            if(front==-1)
+                front=0;
+        }
+        display();
+    }
+    void dequeue()
+    {
+        if(isempty())
+            System.out.println("\nQueue is Empty ");
+        else
+        {
+            q[front]=0;
+            if(front==rear)
+                front=rear=-1;
+            else
+                front++;
+        }
+        display();
+    }
+    void display()
+    {
+        if(front==-1)
+        {
+            System.out.println("Nothing to print ");
+        }
+        else
+        {
+            for(int i=0;i<=rear;i++)
+            {
+                System.out.println(" => "+q[i]);
+            }
+        }
+    }
+    public static void main(String[] args) {
+        queue q1 = new queue(); 
+        
+        int ch;
+        do
+        {
+            System.out.println("");
+            System.out.println("1. Enqueue");
+            System.out.println("2. Dequeue");
+            System.out.println("3. Display");
+            System.out.println("4. Exit");
+            System.out.println("\nEnter the choice : ");
+            ch=q1.input.nextInt();
+            
+            switch(ch)
+            {
+                case 1:
+                    q1.enqueue();
+                    break;
+                case 2:
+                    q1.dequeue();
+                    break;
+                case 3:
+                    q1.display();
+                    break;
+                case 4:
+                    
+                    break;
+            }
+        }while(ch!=4);
+        
+    }
+}
